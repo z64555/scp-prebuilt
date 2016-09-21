@@ -1,0 +1,19 @@
+{
+    "package": {
+        "subject": "scp-fs2open",
+        "repo": "FSO",
+        "name": "build-deps"
+    },
+
+    "version": {
+        "name": "$VERSION_NAME"
+    },
+
+    "files": [
+        {
+            "includePattern": "/tmp/packages/(.*)",
+            "uploadPattern": "$1"
+        }
+    ],
+    "publish": true
+}

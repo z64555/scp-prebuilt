@@ -1,0 +1,12 @@
+language: generic
+sudo: false
+deploy:
+    - provider: bintray
+      user: sirknightly
+      key:
+          secure: "ExbHQjooflpsauAFbrP7XUDnoTf5lZMhM7RS9uDGP2E+OM/haJtZ4dGuItfCBc+bYYiCp6HKmZ6McvXLJIpsURP7/kpHRYsrDiUFQjwAjjJxlwBHG4AzaLjuu2gaXNFwrbYJeDpGGyZtbvqCfrwhPdwcahhwKZSTWic4gGSFlKAALUo+SMui6M3VGhxVgAhWB1rOe8sp/m3F0rEkb76bwvPZzXF804amPiXxzyJhKPlkEY7qPa+IQ+AoSw0tsdvsKE8lbFhdLIOkMtPWz+0t+/7YfcSyjbbK/ZTN0gTjyw68oqdnRaS60hREVUwLHnxlXz+d+/KJJgVx27KWzxAibR7YFhpsSmXQewb2Yn9vh0JClCeAmXvnSMn4zFYPEACqeSs6EHkaNCR/bgTohXOFwwt9Gwn7Efzh+XRMYfB5d9pQkk6zpZHqpCIM0xHot+s2KosFGZ43WCtumgyTQ9LZhpn4F8R3rM6yvnFBThRAPVkIyWBmZK7g+MlORL4U8Zh92Rf3RqLUqIvdeSr1nS0Ly3SGtb4IwbNqsXnBL6Q4OTnKwtXyKLeCqhFmIAOCDscXUoUUn6blpTM70Cz0Ju9/B7csOh5MSnzmofIw+ZoM2nQOpLk1yUdyG7OR5HEGJ/EqKes7d0guheBAfuhQSdFlC5swJY7uUD9pjLlJw8VjJh4="
+      file: ci/bintray.json
+script:
+    - ./ci/script.sh
+before_deploy:
+    - ./ci/before_deploy.sh
