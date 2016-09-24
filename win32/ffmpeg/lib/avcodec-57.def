@@ -129,7 +129,6 @@ EXPORTS
     av_vorbis_parse_init
     av_vorbis_parse_reset
     av_xiphlacing
-    available_bits
     avcodec_align_dimensions
     avcodec_align_dimensions2
     avcodec_alloc_context3
@@ -192,8 +191,6 @@ EXPORTS
     avcodec_set_dimensions
     avcodec_string
     avcodec_version
-    aver_isf_history
-    average_split_mvs
     avpicture_alloc
     avpicture_fill
     avpicture_free
@@ -212,13 +209,11 @@ EXPORTS
     avpriv_dnxhd_get_frame_size
     avpriv_dnxhd_get_interlaced
     avpriv_dnxhd_parse_header_prefix
-    avpriv_do_elbg
     avpriv_exif_decode_ifd
     avpriv_find_pix_fmt
     avpriv_find_start_code
     avpriv_get_raw_pix_fmt_tags
     avpriv_h264_has_num_reorder_frames
-    avpriv_init_elbg
     avpriv_lock_avformat
     avpriv_mjpeg_bits_ac_chrominance DATA
     avpriv_mjpeg_bits_ac_luminance DATA
