@@ -1,12 +1,37 @@
 language: generic
 sudo: false
 deploy:
-    - provider: bintray
-      user: sirknightly
-      key:
-          secure: "ExbHQjooflpsauAFbrP7XUDnoTf5lZMhM7RS9uDGP2E+OM/haJtZ4dGuItfCBc+bYYiCp6HKmZ6McvXLJIpsURP7/kpHRYsrDiUFQjwAjjJxlwBHG4AzaLjuu2gaXNFwrbYJeDpGGyZtbvqCfrwhPdwcahhwKZSTWic4gGSFlKAALUo+SMui6M3VGhxVgAhWB1rOe8sp/m3F0rEkb76bwvPZzXF804amPiXxzyJhKPlkEY7qPa+IQ+AoSw0tsdvsKE8lbFhdLIOkMtPWz+0t+/7YfcSyjbbK/ZTN0gTjyw68oqdnRaS60hREVUwLHnxlXz+d+/KJJgVx27KWzxAibR7YFhpsSmXQewb2Yn9vh0JClCeAmXvnSMn4zFYPEACqeSs6EHkaNCR/bgTohXOFwwt9Gwn7Efzh+XRMYfB5d9pQkk6zpZHqpCIM0xHot+s2KosFGZ43WCtumgyTQ9LZhpn4F8R3rM6yvnFBThRAPVkIyWBmZK7g+MlORL4U8Zh92Rf3RqLUqIvdeSr1nS0Ly3SGtb4IwbNqsXnBL6Q4OTnKwtXyKLeCqhFmIAOCDscXUoUUn6blpTM70Cz0Ju9/B7csOh5MSnzmofIw+ZoM2nQOpLk1yUdyG7OR5HEGJ/EqKes7d0guheBAfuhQSdFlC5swJY7uUD9pjLlJw8VjJh4="
-      file: ci/bintray.json
+    -   provider: releases
+        api_key:
+            secure: "UvgFbnf4xeTazysnIb3+p+lP8Arx1JYpvXqxPKyYxbzfVP3uNfCFIVx+VL/YMjZGohSxBbVxbgdiPYwjnEd6kqG09puH7+DAYTTNS9Nueqch2qlYqrsQmlabLdGE4RZ71IJDt8P9ms3OKjf020dBtJaoEyLN6SFtdyO+1F0+WTwrJ4yxZkE1PJ7YfmaP6L4SNj1Yg0YXHojQ+gp8fo0J9nz0YwMeiQSimM7d7rLL62kGhBTkFU7vGkCbQDhxoW01BVp/tJ7QAPeolDyupvWCLEdZc/tEYYJjK3iBnhlO3wkre9HMQc/1hOGjc58hpDHd9kWs43fLhCsN3AKsDai2fnZrW7fXIykMlo97orDVL8ocjKWHRfcjoB9JApXlb+ToAMFq3F3gm8O1l0NBHXqksEyxlSrdU2YmO9HCzddVgagSZKo+Eib4yOLmWRw/cT8aaLb8giigjrPzJdqSfH17fCdoswHnT3dkiO+Ek/AbsiYr7maA1C2E+bJZ19g5KUexocnXz5NB2s8b/XYL6q6Au9FiYIrgQb9VVRpkPbf1Yuz39ukWcpv/u26O1RnKKC4LoPQGYsljAnOQwyqUilB35PAsVOubzsO5l62YKWwf74kF2Nzu707Ls5N6D25A2BTU1PjHksN93NuQ1Cp/cCRxlgT9BIP0TCGS2lqcw2Wjf6I="
+        file_glob: true
+        file: /tmp/packages/*
+        skip_cleanup: true
+        on:
+            tags: true
+
+before_install:
+  - |
+        declare -r SSH_FILE="$(mktemp -u $HOME/.ssh/XXXXX)"
+
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        # Decrypt the file containing the private key
+        openssl aes-256-cbc \
+          -K $encrypted_bb0bdcea090b_key -iv $encrypted_bb0bdcea090b_iv \
+          -in ".travis/travis_deploy_key.enc" \
+          -out "$SSH_FILE" -d
+
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        # Enable SSH authentication
+        chmod 600 "$SSH_FILE" \
+         && printf "%s\n" \
+              "Host github.com" \
+              "  IdentityFile $SSH_FILE" \
+              "  LogLevel ERROR" >> ~/.ssh/config
+              
+        git config --global user.email "travis@travis-ci.org"
+        git config --global user.name "Travis CI"
 script:
     - ./ci/script.sh
-before_deploy:
-    - ./ci/before_deploy.sh
