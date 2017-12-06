@@ -6,7 +6,7 @@ declare -r SSH_FILE="$(mktemp -u $HOME/.ssh/XXXXX)"
 
 # Decrypt the file containing the private key
 openssl aes-256-cbc \
-	-K $encrypted_bb0bdcea090b_key -iv $encrypted_bb0bdcea090b_iv \
+	-K $encrypted_78f818c4bf5f_key -iv $encrypted_78f818c4bf5f_iv \
 	-in ".travis/travis_deploy_key.enc" \
 	-out "$SSH_FILE" -d
 
