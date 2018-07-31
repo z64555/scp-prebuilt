@@ -10,4 +10,6 @@ The linux builds were compiled with the following configure line:
 
     ./configure --disable-programs --disable-doc --disable-avdevice --disable-postproc --disable-avfilter --disable-network --disable-encoders --disable-hwaccels --disable-muxers --pkg-config-flags=--static --disable-debug --arch=x86_64 --enable-shared --disable-static --prefix=/tmp/ffmpeg
 
+For Linux builds the distribution compatibility is very important. Since our CI infrastructure currently runs on Ubuntu 14.04 the prebuilt libraries need to be compatible with this or an earilier version. The libraries in this repository have been compiled with Ubuntu 14.04. You can use Docker for getting an instance of Ubuntu 14.04 without actually installing the entire distribution.
+
 Vorbis and Theora are required but everything else can be removed. For Windows builds the script in [this repository](https://github.com/rdp/ffmpeg-windows-build-helpers) can be used. It allows to cross-compile everything that is needed from a Linux machine using MinGW. You will have to adjust the configure line to reduce the size of the libraries since the default version includes everything there is and that is way to much for us.
