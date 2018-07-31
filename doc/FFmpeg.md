@@ -8,7 +8,7 @@ On Mac you have to add `--install-name-dir="@executable_path/../Frameworks" --pr
 
 The linux builds were compiled with the following configure line:
 
-    ./configure --disable-programs --disable-doc --disable-avdevice --disable-postproc --disable-avfilter --disable-network --disable-encoders --disable-hwaccels --disable-muxers --pkg-config-flags=--static --disable-debug --arch=x86_64 --enable-shared --disable-static --prefix=/tmp/ffmpeg
+    ./configure --disable-programs --disable-doc --disable-avdevice --disable-postproc --disable-avfilter --disable-network --disable-encoders --disable-hwaccels --disable-muxers --disable-vaapi --disable-vdpau --disable-videotoolbox --pkg-config-flags=--static --disable-debug --arch=x86_64 --enable-shared --disable-static --prefix=/tmp/ffmpeg
 
 For Linux builds the distribution compatibility is very important. Since our CI infrastructure currently runs on Ubuntu 14.04 the prebuilt libraries need to be compatible with this or an earilier version. The libraries in this repository have been compiled with Ubuntu 14.04. You can use Docker for getting an instance of Ubuntu 14.04 without actually installing the entire distribution.
 
