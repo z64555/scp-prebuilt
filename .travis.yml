@@ -3,7 +3,7 @@ sudo: false
 deploy:
     -   provider: releases
         api_key:
-            secure: "UvgFbnf4xeTazysnIb3+p+lP8Arx1JYpvXqxPKyYxbzfVP3uNfCFIVx+VL/YMjZGohSxBbVxbgdiPYwjnEd6kqG09puH7+DAYTTNS9Nueqch2qlYqrsQmlabLdGE4RZ71IJDt8P9ms3OKjf020dBtJaoEyLN6SFtdyO+1F0+WTwrJ4yxZkE1PJ7YfmaP6L4SNj1Yg0YXHojQ+gp8fo0J9nz0YwMeiQSimM7d7rLL62kGhBTkFU7vGkCbQDhxoW01BVp/tJ7QAPeolDyupvWCLEdZc/tEYYJjK3iBnhlO3wkre9HMQc/1hOGjc58hpDHd9kWs43fLhCsN3AKsDai2fnZrW7fXIykMlo97orDVL8ocjKWHRfcjoB9JApXlb+ToAMFq3F3gm8O1l0NBHXqksEyxlSrdU2YmO9HCzddVgagSZKo+Eib4yOLmWRw/cT8aaLb8giigjrPzJdqSfH17fCdoswHnT3dkiO+Ek/AbsiYr7maA1C2E+bJZ19g5KUexocnXz5NB2s8b/XYL6q6Au9FiYIrgQb9VVRpkPbf1Yuz39ukWcpv/u26O1RnKKC4LoPQGYsljAnOQwyqUilB35PAsVOubzsO5l62YKWwf74kF2Nzu707Ls5N6D25A2BTU1PjHksN93NuQ1Cp/cCRxlgT9BIP0TCGS2lqcw2Wjf6I="
+            secure: "sSItwiT7w7q4zH5oOPxb5sJbdYgZ3tl7yppeKymEOwtDJI8jcoQRcb5YFOJuKkITleoABASIaR9RX08H4msks3o+9tpvLr+DMnuxGYd06XM0NQSbMxzYKgNcOTOBAJq4Rz0+g/9HGUh/cIk11wN6uV1uyJalz4+eIfBVJOHD/ZkWIJOCB8MED+NotaD4hZ26AQXwtCTbyTWgSx/0nlN2/cgezg9Ek6YwtWHr7FKQmKbxXGefDGuii7qKv9brJSHzs/Ju1dMXMggnCbi1w91leNX4OcSL31lKP2fV627YOAmaFxgVhC4650sa/FjWuLUt1WZf/3x89GLkwyATy6wXBBU/nqOgEtyvjO2648pBn2uQkfORZBzgmS1QXd1oNl+7iMY9FRFPXUCWDrxyJH2eju2ZQamClnHeSufgyM5riQrfTVNw9NIDJmPYRKxKf5Qln0uZikZlAgoC5sw/6tjbgj6AU2FLQg2Em7NqHiCkP5Tgzrn9xeDw310T/t0zSimrOD4RtxgOE4SKey0/76oup1wcSFcgX2FizvAmhphlwoV9BxR2Lm021V7CHOgezXbKI+hqqHoN/sAFgp0C5J1fEDFSIkWAZi7lGoVVpdPFoBPgbeuyK7LzDPCCp5zgI+utgFfbJmszkvatRzCvfLd18pzs2eL19UtBYS7dwUr6WIg="
         file_glob: true
         file: /tmp/packages/*
         skip_cleanup: true
