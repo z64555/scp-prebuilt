@@ -1,6 +1,7 @@
 # Prebuilt libraries for the FSO SCP
 This repository contains the prebuilt libraries required for the FreeSpace Open Source Code Project. Currently these libraries are included here:
  * [FFmpeg](http://ffmpeg.org/)
+ * [FreeType](https://www.freetype.org/) (Win32/64 and Mac)
 
 The libraries are compiled for the three major platforms we support (Linux, Mac OSX and Windows 32- and 64-bit). To make adding or updating libraries easier this repository automatically builds the packages and uploads them to [BinTray](https://bintray.com/scp-fs2open/FSO/build-deps). This only happens for normal pushes, not pull requests.
 
