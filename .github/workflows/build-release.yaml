@@ -1,0 +1,42 @@
+name: Build Release Package
+
+on:
+  push:
+    # Triggered on pushes to master
+    branches:
+      - 'master'
+    paths:
+      # Only trigger when non-CI changes were made
+      - 'doc/*'
+      - 'linux/*'
+      - 'mac/*'
+      - 'win32/*'
+      - 'win64/*'
+    
+  workflow_dispatch:
+    # Triggered manually from Github
+
+
+jobs:
+  package_libs:
+    name: Package libs into .tar and .zip containers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Run script
+        # Note: Sets {{ env.TAG_NAME }} to HEAD SHA-1
+        run: ci/script.sh
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          name: bin-${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+      

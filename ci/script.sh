@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Set TAG_NAME locally an in github env
+TAG_NAME=$(git rev-parse HEAD)
+echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+if []
 set -ex
 
 if [ -n "$TRAVIS_TAG" ]; then 
