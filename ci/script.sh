@@ -5,10 +5,11 @@ pwd
 set -e
 
 # Set TAG_NAME locally and in github env
-TAG_NAME=$(git rev-parse HEAD)
+TAG=$(git rev-parse HEAD)
+TAG_NAME="bin-${TAG_NAME::7}"	# Get just the first 7 characters of the SHA-1
 echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
 
-if [ $(git tag -l "bin-$TAG_NAME") ]; then
+if [ $(git tag -l $TAG_NAME) ]; then
 	echo "Error: Tag already exists!"
 	exit 1
 fi
