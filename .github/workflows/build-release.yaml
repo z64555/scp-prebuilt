@@ -1,9 +1,10 @@
 name: Build Release Package
 
 on:
+  # Trigger on push or from Github web UI
   push:
-    # Triggered on pushes to master
     branches:
+      # Only Trigger on pushes to master, and
       - 'master'
     paths:
       # Only trigger when non-CI changes were made
@@ -39,4 +40,8 @@ jobs:
           name: bin-${{ env.TAG_NAME }}
           draft: false
           prerelease: false
-      
+          files: |
+            linux/bin-linux.tar.gz
+            mac/bin-mac.tar.gz
+            win32/bin-win32.zip
+            win64/bin-win64.zip
