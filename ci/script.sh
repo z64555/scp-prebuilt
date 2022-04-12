@@ -6,7 +6,9 @@ set -e
 
 # Set TAG_NAME locally and in github env
 TAG=$(git rev-parse HEAD)
-TAG_NAME="bin-${TAG_NAME::7}"	# Get just the first 7 characters of the SHA-1
+TAG_NAME="bin-${TAG::7}"	# Get just the first 7 characters of the SHA-1
+echo "TAG="$TAG
+echo "TAG_NAME="$TAG_NAME
 echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
 
 if [ $(git tag -l $TAG_NAME) ]; then
@@ -19,7 +21,7 @@ git config --global user.email "SirKnightlySCP@gmail.com"
 git config --global user.name "SirKnightly"
 
 git remote add deploy "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
-git tag -a "bin-$TAG_NAME" -m "Automated prebuilt binary tag"
+git tag -a "$TAG_NAME" -m "Automated prebuilt binary tag"
 git push deploy --tags
 
 # Zip up the packages
