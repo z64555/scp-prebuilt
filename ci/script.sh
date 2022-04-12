@@ -5,9 +5,7 @@ pwd
 set -e
 
 # Set TAG_NAME locally and in github env
-TAG=$(git rev-parse HEAD)
-TAG_NAME="bin-${TAG::7}"	# Get just the first 7 characters of the SHA-1
-echo "TAG="$TAG
+TAG_NAME="bin-$(git rev-parse --short HEAD)"
 echo "TAG_NAME="$TAG_NAME
 echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
 
