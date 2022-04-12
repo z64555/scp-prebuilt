@@ -14,6 +14,9 @@ if [ $(git tag -l "bin-$TAG_NAME") ]; then
 fi
 
 # Make the tag
+git config --global user.email "SirKnightlySCP@gmail.com"
+git config --global user.name "SirKnightly"
+
 git remote add deploy "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
 git tag -a "bin-$TAG_NAME" -m "Automated prebuilt binary tag"
 git push deply --tags
