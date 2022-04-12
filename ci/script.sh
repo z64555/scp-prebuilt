@@ -19,7 +19,7 @@ git config --global user.name "SirKnightly"
 
 git remote add deploy "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
 git tag -a "bin-$TAG_NAME" -m "Automated prebuilt binary tag"
-git push deply --tags
+git push deploy --tags
 
 # Zip up the packages
 (cd linux && tar -cvzf bin-linux.tar.gz *)
